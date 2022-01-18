@@ -1,0 +1,7 @@
+{
+	"name": "ie.itcarlow.pathingsystem",
+	"version": "0.1.0",
+	"displayName": "PathingSystem",
+	"description": "A package implementing Bezier Curves and Splines to allow for the creation of simple and customisable paths in games",
+	"unity": "2020.3"
+}
