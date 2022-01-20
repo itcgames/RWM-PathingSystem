@@ -92,10 +92,12 @@ public class BezierSplineInspector : Editor
         }
 
         EditorGUI.BeginChangeCheck();
-
+        BezierControlPointMode mode = (BezierControlPointMode)
+            EditorGUILayout.EnumPopup("Mode", spline.GetControlPointMode(selectedIndex));
         if (EditorGUI.EndChangeCheck())
         {
             Undo.RecordObject(spline, "Change Point Mode");
+            spline.SetControlPointMode(selectedIndex, mode);
             EditorUtility.SetDirty(spline);
         }
     }
@@ -122,6 +124,7 @@ public class BezierSplineInspector : Editor
         if (index == 0)
             size *= 2f;
 
+        Handles.color = modeColors[(int)spline.GetControlPointMode(index)];
         if (Handles.Button(point, handleRotation, size * handleSize, size * pickSize, Handles.DotCap))
         {
             selectedIndex = index;
